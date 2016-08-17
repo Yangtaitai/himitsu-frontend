@@ -19,7 +19,7 @@
                 })
                 .state('signup', {
                     url: '/signup',
-                    controller: 'accountController',
+                    controller: 'AccountController',
                     templateUrl: '/views/signup.html'
                 })
                 .state('secret', {
