@@ -18,13 +18,13 @@
                     content: '',
                     isPublic: true,
                     //  isAnonymous:'',
-                    owner: $localStorage.user._id,
+                    username: $localStorage.user._id,
                     images:''
                 };
 
                 $scope.forwardSecret = {
                     content: '',
-                    owner: $localStorage.user._id,
+                    username: $localStorage.user._id,
                     forwards: '',
                  //   referId: ''
                 };
