@@ -46,10 +46,12 @@
             $scope.signupSubmit = function () {
                 userService.postSignUp($scope.signupData)
                     .then(function(res){
-                        console.log(res);
+
+                        console.log("controller");
+
                         if(res && res.result != false) {
-                            console.log(res);
-                            
+                            console.log(res.data);
+
                             $state.go('login');
                         }else{
                             alert(res.err.message);

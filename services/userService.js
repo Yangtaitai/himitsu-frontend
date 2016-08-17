@@ -34,11 +34,13 @@
                 console.log(data);
                 return $http.post($HOST.url + '/signup', data)
                     .then(function(data){
+
                         console.log(res.data);
+
                         console.log('Sign up post!!!');
 
                         if(res.data){
-                            console.log(res);
+                            console.log(res.data);
                             return res.data;
                         }else{
                             return{result:false};
