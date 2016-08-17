@@ -20,7 +20,11 @@
                         userService.userId = res.data.id;
 
                         console.log('localStorage');
+                        
+
                         $localStorage.userId = res.data.id;
+
+                        console.log($localStorage.userId);
 
                         return res.data;
                         
