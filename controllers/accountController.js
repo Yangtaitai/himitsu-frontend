@@ -14,8 +14,8 @@
             $scope.signupData = {
                 image:'',
                 email:'',
+                password:'',
                 password1:'',
-                password2:'',
                 firstname:'',
                 lastname:'',
                 username:'',

@@ -31,7 +31,7 @@
             };
 
             userService.postSignUp = function (data) {
-                console.log(data);
+                
                 return $http.post($HOST.url + '/signup', data)
                     .then(function(res){
 
@@ -45,7 +45,9 @@
                             console.log(res.data);
                             return res.data;
                         }else{
-                            return{result:false};
+                            return{
+                                result:false
+                            };
                         };
                     });
             };
