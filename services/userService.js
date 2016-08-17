@@ -35,6 +35,7 @@
                 return $http.post($HOST.url + '/signup', data)
                     .then(function(data){
 
+                        console.log('service');
                         console.log(res.data);
 
                         console.log('Sign up post!!!');
