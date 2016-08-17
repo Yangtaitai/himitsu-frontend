@@ -30,6 +30,23 @@
                 
             };
 
+            userService.postSignUp = function (data) {
+                console.log(data);
+                return $http.post($HOST.url + '/signup',data)
+                    .then(function(data){
+                        console.log('Sign up post!!!');
+
+                        console.log(res.data);
+
+                        if(res.data){
+                            console.log(res);
+                            return res.data;
+                        }else{
+                            return{result:false};
+                        };
+                    });
+            };
+
             userService.loadUser = function(){
                 return $http.get($HOST.url+'/user/'+$localStorage.userId)
                     .then(function(res){

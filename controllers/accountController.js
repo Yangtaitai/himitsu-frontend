@@ -11,6 +11,17 @@
                 password: '123'
             };
 
+            $scope.signupData = {
+                image:'',
+                email:'',
+                password1:'',
+                password2:'',
+                firstname:'',
+                lastname:'',
+                username:'',
+                gender:''
+            }
+
             $scope.loginSubmit = function () {
                 userService.postLogin($scope.loginData)
                     .then(function (res) {
@@ -30,8 +41,22 @@
                     });
 
             };
+
+            $scope.signupSubmit = function () {
+                userService.postSignUp($scope.signupData)
+                    .then(function(res){
+                        console.log(res);
+                        if(res && res.result != false) {
+                            console.log(res);
+                            $state.go('login');
+                        }else{
+                            alert(res.err.message);
+                        }
+                    });
+            };
+
             $scope.signup = function () {
-                $state.go('user'); //
+                $state.go('signup'); //
             };
 
 
