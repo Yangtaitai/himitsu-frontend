@@ -19,7 +19,8 @@
                 firstname:'',
                 lastname:'',
                 username:'',
-                gender:''
+                gender:'',
+                birthdate:''
             }
 
             $scope.loginSubmit = function () {
@@ -48,6 +49,7 @@
                         console.log(res);
                         if(res && res.result != false) {
                             console.log(res);
+                            
                             $state.go('login');
                         }else{
                             alert(res.err.message);
@@ -56,7 +58,7 @@
             };
 
             $scope.signup = function () {
-                $state.go('signup'); //
+                $state.go('signup'); 
             };
 
 

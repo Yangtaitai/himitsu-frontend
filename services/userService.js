@@ -32,11 +32,10 @@
 
             userService.postSignUp = function (data) {
                 console.log(data);
-                return $http.post($HOST.url + '/signup',data)
+                return $http.post($HOST.url + '/signup', data)
                     .then(function(data){
-                        console.log('Sign up post!!!');
-
                         console.log(res.data);
+                        console.log('Sign up post!!!');
 
                         if(res.data){
                             console.log(res);
