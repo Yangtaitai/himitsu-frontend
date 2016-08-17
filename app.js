@@ -17,13 +17,13 @@
                     templateUrl: '/views/login.html'
 
                 })
-                .state('user', {
-                    url: '/user',
-                    controller: 'signupController',
+                .state('signup', {
+                    url: '/signup',
+                    controller: 'accountController',
                     templateUrl: '/views/signup.html'
                 })
                 .state('secret', {
-                    url: '/secret',
+                    url: '/secrets',
                     controller: 'secretController',
                     templateUrl: '/views/secret.html'
                 });
