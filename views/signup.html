@@ -206,20 +206,20 @@
             </div>
             <div class="input-wrapper">
                 <label for="inputEmail" class="sr-only">Email Address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" ng-model="signUpData.email">
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" ng-model="signupData.email">
                 <span class="'glyphicon glyphicon-asterisk'"></span>
             </div>
             <div class="input-wrapper">
                 <label for="inputName" class="sr-only">Name</label>
-                <input type="text" id="inputName" class="form-control" placeholder="User Name" required="" autofocus="" ng-model="signupData.name">
+                <input type="text" id="inputName" class="form-control" placeholder="User Name" required="" autofocus="" ng-model="signupData.username">
             </div>
             <div class="input-wrapper">
                 <label for="inputLastName" class="sr-only">Last Name</label>
-                <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" required="" autofocus="">
+                <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" required="" autofocus="" ng-model="signupData.lastname">
             </div>
             <div class="input-wrapper">
                 <label for="inputFirstName" class="sr-only">First Name</label>
-                <input type="text" id="inputFirstName" class="form-control" placeholder="First Name" required="" autofocus="">
+                <input type="text" id="inputFirstName" class="form-control" placeholder="First Name" required="" autofocus="" ng-model="signupData.firstname">
             </div>
             <div class="input-wrapper">
                 <label for="inputPassword1" class="sr-only">Password</label>
@@ -230,7 +230,7 @@
                 <input type="password" id="inputPassword2" class="form-control" placeholder="Re-enter password" ng-model="signupData.password2">
             </div>
             <div class="input-wrapper">
-                <select id="Gender" class="form-control" name="Gender" data-bind="value: gender, hasFocus: gender.focused, css: { 'has-error': showError(gender) }">
+                <select id="Gender" class="form-control" name="Gender" data-bind="value: gender, hasFocus: gender.focused, css: { 'has-error': showError(gender) }" ng-model="signupData.gender">
                     <option selected="selected" value=""> &nbsp;Gender</option>
                     <option value="m">Male</option>
                     <option value="f">Female</option>
@@ -240,7 +240,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <p class="input-group">
-                        <input type="text"  placeholder="your birthdate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
+                        <input type="text"  placeholder="your birthdate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="signupData.birthdate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
                         <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -249,7 +249,7 @@
 
                 <div class="input-wrapper">
                     <a class="btn-signup" ng-click="signupSubmit()">SIGN UP</a>
-                    <a ui-sref="login">B<i></i>back To login</a>
+                    <a ui-sref="login"><i></i>back To login</a>
                 </div>
 
         </form>
