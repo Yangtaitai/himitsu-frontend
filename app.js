@@ -23,7 +23,7 @@
                     templateUrl: '/views/signup.html'
                 })
                 .state('secret', {
-                    url: '/secrets',
+                    url: '/secret',
                     controller: 'secretController',
                     templateUrl: '/views/secret.html'
                 });
