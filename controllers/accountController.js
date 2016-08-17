@@ -7,7 +7,7 @@
         'AccountController', function ($state, $scope, userService) {
 
             $scope.loginData = {
-                email: 'yangmang@gwu.edu',
+                email: 'amyfan@gwu.edu',
                 password: '123'
             };
 
