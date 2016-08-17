@@ -19,7 +19,8 @@
 
                         userService.userId = res.data.id;
 
-                        $localStorage.userId = res.data.id;
+                        // $localStorage.userId = res.data.id;
+                        $localStorage.user._id = res.data.id;
 
                         return res.data;
                         
@@ -44,6 +45,7 @@
                         if(res.data){
                             console.log(res.data);
                             return res.data;
+                            
                         }else{
                             return{
                                 result:false
