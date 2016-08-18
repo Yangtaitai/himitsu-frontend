@@ -37,7 +37,7 @@
 
             userService.postSignUp = function (data) {
                 
-                return $http.post($HOST.url + '/signup', data)
+                return $http.post($HOST.url + '/user', data)
                     .then(function(res){
 
                         console.log('service');
