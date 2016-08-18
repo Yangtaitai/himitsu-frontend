@@ -13,7 +13,7 @@
                 
                 return $http.post($HOST.url+'/login', data)
                 .then(function(res){
-                    console.log(res.data.id);
+                    console.log(res.data.data.id);
                     
                     if(res.data){
 
@@ -22,7 +22,7 @@
                         console.log('localStorage');
                         
 
-                        $localStorage.userId = res.data.id;
+                        $localStorage.userId = res.data.data.id;
 
                         console.log($localStorage.userId);
 
