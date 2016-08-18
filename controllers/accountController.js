@@ -18,7 +18,7 @@
                 password1:'',
                 firstname:'',
                 lastname:'',
-                username:'',
+                name:'',
                 gender:'',
                 birthdate:''
             }
