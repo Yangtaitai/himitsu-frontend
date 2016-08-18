@@ -17,7 +17,7 @@
                     
                     if(res.data){
 
-                        userService.userId = res.data.id;
+                        userService.userId = res.data.data.id;
 
                         console.log('localStorage');
                         
