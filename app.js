@@ -17,7 +17,7 @@
                     templateUrl: '/views/login.html'
 
                 })
-                .state('user', {
+                .state('signup', {
                     url: '/signup',
                     controller: 'AccountController',
                     templateUrl: '/views/signup.html'
