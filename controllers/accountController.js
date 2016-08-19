@@ -6,6 +6,9 @@
         .controller(
         'AccountController', function ($state, $scope, userService) {
 
+
+            $scope.isLogin = true;
+
             $scope.loginData = {
                 email: 'amyfan@gwu.edu',
                 password: '123'
@@ -21,6 +24,10 @@
                 name:'',
                 gender:'',
                 birthdate:''
+            }
+
+            $scope.switchType = function(type){
+                $scope.isLogin = (type==='login');
             }
 
             $scope.loginSubmit = function () {

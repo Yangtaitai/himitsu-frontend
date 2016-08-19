@@ -5,11 +5,12 @@
   "homepage": "",
   "dependencies": {
     "angular": "~1.4.8",
-    "angular-bootstrap": "*",
+    "angular-bootstrap": "^2.0.2",
     "font-awesome": "~4.5.0",
     "angular-ui-router": "*",
     "jquery": "^2.2.3",
     "bootstrap": "*",
-    "ngstorage": "^0.3.10"
+    "ngstorage": "^0.3.10",
+    "hover": "Hover#^2.0.2"
   }
 }

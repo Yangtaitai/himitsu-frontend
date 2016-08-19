@@ -1,9 +1,10 @@
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+    crossorigin="anonymous">
 
 <style>
     body {
         background: url('views/images/background2.jpg') center center fixed;
-        background-size:cover;
+        background-size: cover;
     }
     
     .form-signin {
@@ -17,9 +18,9 @@
     .form-signin .checkbox {
         margin-bottom: 10px;
     }
-
-    .form-signin input{
-        outline:none;
+    
+    .form-signin input {
+        outline: none;
     }
     
     .form-signin-heading {
@@ -180,8 +181,9 @@
         font-size: 12px;
         position: relative;
     }
-    #checkStay:hover{
-        color:#D8D8D8;
+    
+    #checkStay:hover {
+        color: #D8D8D8;
     }
 </style>
 
@@ -191,24 +193,47 @@
             <h2 class="form-signin-heading">HIMITSU</h2>
             <img src="">
             <!--<div class="input-wrapper">-->
-            <div>
+            <div ng-if="isLogin">
                 <label for="inputEmail" class="sr-only">Email Address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" ng-model="loginData.email" required="" autofocus="">
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" ng-model="loginData.email" required=""
+                    autofocus="">
             </div>
             <!--<div class="input-wrapper">-->
-            <div>
+            <div ng-if="isLogin">
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="loginData.password">
                 <label for="inputPassword" class="sr-only">Password</label>
             </div>
-            <div>
+            <div ng-if="isLogin">
                 <input type="checkbox" value="Stay Logged in" id="stayChecked">
                 <label for="stayChecked" id="checkStay"><span>Stay Logged In?</span></label>
             </div>
-            <div class="row">
-                <button class="btn-login" type="button" ng-click="loginSubmit()">LOGIN</button>
-                <a class="btn-signup" ui-sref="signup">SIGN UP</a>
 
+            <div ng-if="!isLogin">
+                <label for="inputEmail" class="sr-only">Email Address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" ng-model="signupData.email" required=""
+                    autofocus="">
             </div>
+            <!--<div class="input-wrapper">-->
+            <div ng-if="!isLogin">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="signupData.password">
+                <label for="inputPassword" class="sr-only">Password</label>
+            </div>
+
+            <div ng-if="!isLogin">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="signupData.password1">
+                <label for="inputPassword" class="sr-only">Password</label>
+            </div>
+
+            <div class="row" ng-if="isLogin">
+                <button class="btn-login" type="button" ng-click="loginSubmit()">LOGIN</button>
+                <button class="btn-signup" type="button" ng-click="switchType('signup')">SIGN UP</button>
+            </div>
+
+            <div class="row" ng-if="!isLogin">
+                <button class="btn-signup" type="button" ng-click="switchType('login')">LOGIN</button>
+                <button class="btn-login" type="button" ng-click="signup()">SIGN UP</button>
+            </div>
+
         </form>
     </div>
 
