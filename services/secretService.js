@@ -2,7 +2,7 @@
 
     angular
         .module('himitsuApp')
-        .factory('secretService', function ($HOST,$http) {
+        .factory('secretService',function ($HOST,$http,$localStorage) {
 
 
             var secretService = this;
@@ -40,6 +40,23 @@
                                 result: false
                             };
                     });
+            };
+
+            this.postComment = function (data) {
+                return $http.post($HOST.url + '/comment',data)
+                    .then(function(res){
+                        console.log(res.data);
+
+                        console.log($localStorage.userId);
+
+                        if(res.data)
+                            return res.data;
+                        else
+                            return {
+                                result : false
+                            };
+                    });
+
             };
         
             
