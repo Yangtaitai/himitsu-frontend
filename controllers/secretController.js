@@ -35,7 +35,7 @@
                     .then(function (res) {
                         if (res) {
                             $scope.secretData = res;
-                            console.log(res + "information test");
+                            console.log(res);
                         } else {
                             alert(res.err);
                         }
@@ -125,7 +125,7 @@ angular.module('himitsuApp').controller('CommentCtrl', function ($scope, $uibMod
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
 
-angular.module('himitsuApp').controller('CommentInstanceCtrl', function ($scope, secretService,userService, $uibModalInstance, secret, $localStorage) {
+angular.module('himitsuApp').controller('CommentInstanceCtrl', function ($scope, secretService, userService, $uibModalInstance, secret, $localStorage) {
 
     $scope.userId = userService.getUserId();
 
@@ -156,6 +156,20 @@ angular.module('himitsuApp').controller('CommentInstanceCtrl', function ($scope,
                     alert(res.err);
                 }
             })
+    };
+
+    $scope.getCommentList = function () {
+
+        secretService.getComment($scope.commentData)
+            .then(function (res) {
+                if (res) {
+                    $scope.commentData = res;
+                    console.log(res);
+                } else {
+                    alert(res.err);
+                }
+            });
+
     };
 
     $scope.cancel = function () {

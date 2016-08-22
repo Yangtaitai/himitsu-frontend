@@ -2,16 +2,16 @@
 
     angular
         .module('himitsuApp')
-        .factory('secretService',function ($HOST,$http,$localStorage) {
+        .factory('secretService', function ($HOST, $http, $localStorage) {
 
 
             var secretService = this;
 
             this.getSecret = function (data) {
 
-                return $http.get($HOST.url+'/secret', data)
+                return $http.get($HOST.url + '/secret', data)
                     .then(function (res) {
-                        console.log(res.data.data);
+                        // console.log(res.data.data);
 
                         if (res.data.data) {
 
@@ -28,11 +28,11 @@
 
             this.postSecret = function (data) {
 
-                return $http.post($HOST.url+'/secret', data)
+                return $http.post($HOST.url + '/secret', data)
                     .then(function (res) {
 
                         console.log(res.data);
-                    
+
                         if (res.data)
                             return res.data;
                         else
@@ -43,23 +43,41 @@
             };
 
             this.postComment = function (data) {
-                return $http.post($HOST.url + '/comment',data)
-                    .then(function(res){
+                return $http.post($HOST.url + '/comment', data)
+                    .then(function (res) {
                         console.log(res.data);
 
                         console.log($localStorage.userId);
 
-                        if(res.data)
+                        if (res.data)
                             return res.data;
                         else
                             return {
-                                result : false
+                                result: false
                             };
                     });
 
             };
-        
-            
+
+            this.getComment = function (data) {
+
+                return $http.get($HOST.url + '/comment', data)
+                    .then(function (res) {
+
+                        console.log("comment test");
+
+                        if (res.data.data) {
+
+                            return res.data.data;
+
+                        } else {
+                            return {
+                                result: false
+                            };
+                        };
+                    });
+            }
+
             return this;
         });
 
