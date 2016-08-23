@@ -10,7 +10,7 @@
             $scope.isLogin = true;
 
             $scope.loginData = {
-                email: 'amyfan@gwu.edu',
+                email: 'yangmang@gmail.com',
                 password: '123'
             };
 
