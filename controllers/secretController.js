@@ -35,7 +35,6 @@
                     .then(function (res) {
                         if (res) {
                             $scope.secretData = res;
-                            console.log(res);
                         } else {
                             alert(res.err);
                         }
@@ -89,6 +88,19 @@
                         };
                     });
             };
+
+            $scope.getCommentList = function (secret) {
+                var comments = "comments";
+                if (!secret.hasOwnProperty(comments)) {
+                    secretService.getCommentList(secret._id)
+                        .then(function (res){
+                            if(res.result){
+                                secret.comments = res.data;
+                        }
+                    });
+                }
+            }
+
 
             $scope.logout = function () {
                 $localStorage.$reset();
@@ -152,10 +164,13 @@ angular.module('himitsuApp').controller('CommentInstanceCtrl', function ($scope,
 
                     $scope.commentData.content = '';
                     // $scope.commentData.secret = secret._id;
+
+                    // $scope.getCommentList();
+                    $uibModalInstance.close($scope.selected.item);
                 } else {
                     alert(res.err);
                 }
-            })
+            });
     };
 
     $scope.getCommentList = function () {

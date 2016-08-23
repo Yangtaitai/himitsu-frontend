@@ -2,7 +2,7 @@
 
     angular
         .module('himitsuApp')
-        .factory('secretService', function ($HOST, $http, $localStorage) {
+        .factory('secretService', function ($HOST, $http, $localStorage, $timeout) {
 
 
             var secretService = this;
@@ -11,7 +11,7 @@
 
                 return $http.get($HOST.url + '/secret', data)
                     .then(function (res) {
-                        // console.log(res.data.data);
+                         console.log(res.data.data);
 
                         if (res.data.data) {
 
@@ -59,16 +59,18 @@
 
             };
 
-            this.getComment = function (data) {
+            this.getCommentList = function (id) {
 
-                return $http.get($HOST.url + '/comment', data)
+                return $http.get($HOST.url + '/comment?secret=' + id) 
                     .then(function (res) {
 
                         console.log("comment test");
 
-                        if (res.data.data) {
+                        if (res.data) {
 
-                            return res.data.data;
+                            return $timeout(function(){
+                                    return res.data
+                                },1000);
 
                         } else {
                             return {
