@@ -3,7 +3,7 @@
     angular.module('himitsuApp')
         .controller(
         'secretController',
-        function ($state, $scope, secretService, userService, $localStorage) {
+        function ($state, $scope, secretService, userService, $localStorage,$uibModal,$log) {
 
             // $scope.convertToSpan = function(stringDate){
             //     var dateOut = new Date(stringDate);
@@ -93,11 +93,11 @@
                 var comments = "comments";
                 if (!secret.hasOwnProperty(comments)) {
                     secretService.getCommentList(secret._id)
-                        .then(function (res){
-                            if(res.result){
+                        .then(function (res) {
+                            if (res.result) {
                                 secret.comments = res.data;
-                        }
-                    });
+                            }
+                        });
                 }
             }
 
@@ -110,32 +110,27 @@
                 $state.go('contact');
             };
 
+            $scope.animationsEnabled = true;
+
+            $scope.showCommentModal = function (secret) {
+
+                var modalInstance = $uibModal.open({
+                    animation: $scope.animationsEnabled,
+                    templateUrl: '/views/modals/_modal-comment-content.html',
+                    controller: 'CommentInstanceCtrl',
+                    resolve: {
+                        secret: function () {
+                            return secret;
+                        }
+                    }
+                });
+            };
+
         });
+
 
 })();
 
-angular.module('himitsuApp').controller('CommentCtrl', function ($scope, $uibModal, $log) {
-
-    $scope.animationsEnabled = true;
-
-    $scope.open = function () {
-
-        var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
-            templateUrl: 'commentContent.html',
-            controller: 'CommentInstanceCtrl',
-            resolve: {
-                secret: function () {
-                    return $scope.secret;
-                }
-            }
-        });
-    };
-
-});
-
-// Please note that $uibModalInstance represents a modal window (instance) dependency.
-// It is not the same as the $uibModal service used above.
 
 angular.module('himitsuApp').controller('CommentInstanceCtrl', function ($scope, secretService, userService, $uibModalInstance, secret, $localStorage) {
 
@@ -150,6 +145,7 @@ angular.module('himitsuApp').controller('CommentInstanceCtrl', function ($scope,
         content: '',
         secret: $scope.secret._id
     }
+
     $scope.selected = {
         item: $scope.secret[0]
     };
