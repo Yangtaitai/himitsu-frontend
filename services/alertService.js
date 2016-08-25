@@ -29,7 +29,7 @@
                     });
                 };
                 alertService.title = title;
-                alertService.data.content = content;
+                alertService.content = content;
             }
 
             alertService.toast = function () {
