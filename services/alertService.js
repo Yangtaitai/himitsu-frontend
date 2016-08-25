@@ -21,18 +21,18 @@
                 var modalInstance = $scope.open({
                     animation: animationsEnabled,
                     templateUrl:
-                    // 'views/alert.html'
-                    <div>
-                        <script type="text/ng-template" id="alert.html">
-                            <div class="modal-body">
-                                {{ Title }} {{ content }}
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-                                <button class="btn btn-primary" type="button" ng-click="commentSubmit()">Ok</button>
-                            </div>
-                        </script>
-                    </div>,
+                    'views/alert.html',
+                    // <div>
+                    //     <script type="text/ng-template" id="alert.html">
+                    //         <div class="modal-body">
+                    //             {{ Title }} {{ content }}
+                    //         </div>
+                    //         <div class="modal-footer">
+                    //             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                    //             <button class="btn btn-primary" type="button" ng-click="commentSubmit()">Ok</button>
+                    //         </div>
+                    //     </script>
+                    // </div>,
                     controller: 'alertInstanceCtrl',
                     size: 'md',
                     resolve: {
