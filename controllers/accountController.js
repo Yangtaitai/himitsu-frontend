@@ -4,7 +4,7 @@
     angular
         .module('himitsuApp')
         .controller(
-        'AccountController', function ($state, $scope, userService) {
+        'AccountController', function ($state, $scope, userService,alertService) {
 
 
             $scope.isLogin = true;
@@ -43,7 +43,8 @@
                                 });
 
                         } else {
-                            alert(res.err.message);
+                            alertService.alert('test','content');
+                            // alert(res.err.message);
                         }
 
                     });

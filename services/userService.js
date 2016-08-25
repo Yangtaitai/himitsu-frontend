@@ -9,6 +9,7 @@
             userService.userId = null;
 
             userService.postLogin = function (data) {
+                
                 console.log(data);
 
                 return $http.post($HOST.url + '/login', data)
@@ -24,7 +25,7 @@
                             }
 
                             return res.data;
-                            
+
                         } else {
 
                             return { result: false };
