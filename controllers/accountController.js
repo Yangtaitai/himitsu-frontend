@@ -43,8 +43,8 @@
                                 });
 
                         } else {
-                            // alertService.alert('test','content');
-                            alert(res.err.message);
+                            alertService.alert('Himitsu',res.err.message);
+                            //alert(res.err.message);
                         }
 
                     });
