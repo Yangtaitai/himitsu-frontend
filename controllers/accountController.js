@@ -43,8 +43,8 @@
                                 });
 
                         } else {
-                            alertService.alert('test','content');
-                            // alert(res.err.message);
+                            // alertService.alert('test','content');
+                            alert(res.err.message);
                         }
 
                     });
