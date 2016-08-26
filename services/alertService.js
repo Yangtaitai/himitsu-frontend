@@ -1,92 +1,68 @@
-(function () {
+(function() {
 
     angular
         .module('himitsuApp')
-        .factory('alertService', function ($uibModal) {
+        .factory('alertService', function($uibModal) {
 
             var alertService = this;
 
-            // var title;
-            // var content;
             var data = {
-                title:'',
-                content:''
+                title: '',
+                content: ''
             }
 
-            alertService.alert = function (title,content) {
+            alertService.alert = function(title, content) {
 
                 var animationsEnabled = true;
 
-                alertService.alertModal = function (data) {
-
-                    var modalInstance = $uibModal.open({
-                        animation: animationsEnabled,
-                        templateUrl: '/views/modals/_modal-alert.html',
-                        controller: 'alertInstanceCtrl',
-                        size: 'md',
-                        resolve: {
-                            data: function () {
-                                return data;
-                            }
+                var modalInstance = $uibModal.open({
+                    animation: animationsEnabled,
+                    templateUrl: '/views/modals/_modal-alert.html',
+                    controller: 'alertInstanceCtrl',
+                    size: 'md',
+                    resolve: {
+                        data: function() {
+                            return {
+                                title: title,
+                                content: content
+                            };
                         }
-                    });
-                };
-                console.log(title);
-                console.log(content);
+                    }
+                });
 
-                alertService.title = title;
-                alertService.content = content;
+                console.log(data);
             }
 
-            alertService.toast = function (title,content) {
-                
-                var animationsEnabled = true;
-
-                alertService.alertModal = function (data) {
-
-                    var modalInstance = $uibModal.open({
-                        animation: animationsEnabled,
-                        templateUrl: '/views/modals/_modal-confirm.html',
-                        controller: 'alertInstanceCtrl',
-                        size: 'md',
-                        resolve: {
-                            data: function () {
-                                return data;
-                            }
-                        }
-                    });
-                };
-                alertService.title = title;
-                alertService.content = content;
-
-            }
-
-            alertService.confirm = function (title, content) {
+            alertService.confirmModal = function(title, content) {
 
                 var animationsEnabled = true;
 
-                alertService.alertModal = function (data) {
-
-                    var modalInstance = $uibModal.open({
-                        animation: animationsEnabled,
-                        templateUrl: '/views/modals/_modal-confirm.html',
-                        controller: 'alertInstanceCtrl',
-                        size: 'md',
-                        resolve: {
-                            data: function () {
-                                return data;
-                            }
+                var modalInstance = $uibModal.open({
+                    animation: animationsEnabled,
+                    templateUrl: '/views/modals/_modal-confirm.html',
+                    controller: 'alertInstanceCtrl',
+                    size: 'md',
+                    resolve: {
+                        data: function() {
+                            return {
+                                title: title,
+                                content: content
+                            };
                         }
-                    });
-                };
-                alertService.title = title;
-                alertService.content = content;
+                    }
+                });
             }
 
-                return this;
+            alertService.toast = function(title, content) {}
+
+            return this;
         });
 })();
 
- angular.module('himitsuApp').controller('alertInstanceCtrl',function(){
+angular.module('himitsuApp').controller('alertInstanceCtrl', function(alertService, $scope, $uibModalInstance, data) {
+    $scope.data = data;
 
- });
+    $scope.close = function() {
+        $uibModalInstance.close();
+    }
+});
