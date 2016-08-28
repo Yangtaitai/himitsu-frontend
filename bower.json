@@ -11,6 +11,7 @@
     "jquery": "^2.2.3",
     "bootstrap": "*",
     "ngstorage": "^0.3.10",
-    "hover": "Hover#^2.0.2"
+    "hover": "Hover#^2.0.2",
+    "angular-file-upload": "^2.3.4"
   }
 }

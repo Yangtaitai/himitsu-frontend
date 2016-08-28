@@ -64,7 +64,7 @@
 
                                 $state.go('login');
                             } else {
-                                alert(res.err.message);
+                                alertService.alert(res.err.message);
                             }
                         });
                 };

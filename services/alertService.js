@@ -11,7 +11,7 @@
                 content: ''
             }
 
-            alertService.alert = function(title, content) {
+            alertService.alert = function(content, title) {
 
                 var animationsEnabled = true;
 
@@ -23,7 +23,7 @@
                     resolve: {
                         data: function() {
                             return {
-                                title: title,
+                                title: title ? title : 'Himitsu',
                                 content: content
                             };
                         }
