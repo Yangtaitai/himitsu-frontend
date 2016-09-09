@@ -6,8 +6,8 @@
             'ui.bootstrap', 'ui.router', 'ngStorage', 'angularFileUpload'
         ])
         .constant('$HOST', {
-            // 'url': 'http://topsecret.today:4000'
-            'url': 'http://localhost:4000'
+            'url': 'http://topsecret.today:4000'
+                // 'url': 'http://localhost:4000'
         })
         .config(function($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/login');
