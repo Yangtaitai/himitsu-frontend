@@ -30,10 +30,10 @@
                     }
                 });
 
-                console.log(data);
+                return modalInstance.result;
             }
 
-            alertService.confirmModal = function(title, content) {
+            alertService.confirmModal = function(content, title) {
 
                 var animationsEnabled = true;
 
@@ -45,12 +45,14 @@
                     resolve: {
                         data: function() {
                             return {
-                                title: title,
+                                title: title ? title : 'Himitsu',
                                 content: content
                             };
                         }
                     }
                 });
+
+                return modalInstance.result;
             }
 
             alertService.toast = function(title, content) {}

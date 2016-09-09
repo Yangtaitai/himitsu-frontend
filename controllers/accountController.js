@@ -44,7 +44,7 @@
                                     });
 
                             } else {
-                                alertService.alert('Himitsu', res.err.message).then(function(res) {
+                                alertService.alert(res.err.message).then(function(res) {
                                     console.log(res);
                                 });
                             }

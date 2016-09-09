@@ -3,7 +3,7 @@
     angular.module('himitsuApp')
         .controller(
             'secretController',
-            function($state, $scope, secretService, userService, $localStorage, $uibModal, $log, FileUploader, alertService) {
+            function($state, $scope, secretService, userService, $localStorage, $uibModal, $log, FileUploader, alertService, $HOST) {
 
                 // $scope.convertToSpan = function(stringDate){
                 //     var dateOut = new Date(stringDate);
@@ -19,7 +19,32 @@
                     isPublic: true,
                     //  isAnonymous:'',
                     username: $localStorage.userId,
-                    images: ''
+                    images: []
+                };
+
+                $scope.getImageUrl = function(image) {
+                    if (image)
+                        return $HOST.url + '/images/' + image;
+                    else
+                        return null;
+                };
+
+                $scope.getImageUrls = function(secret) {
+                    var slides = [];
+
+                    for (var i = 0; i < secret.images.length; i++) {
+                        if (secret.images[i]) {
+                            slides.push({
+                                image: $HOST.url + '/images/' + secret.images[i],
+                                text: '',
+                                id: slides.length
+                            });
+                        }
+                    }
+
+                    secret.slides = slides;
+
+                    return slides;
                 };
 
                 $scope.forwardSecret = {
@@ -31,10 +56,16 @@
 
                 $scope.getSecretList = function() {
 
-                    secretService.getSecret($scope.secretData)
+                    secretService.getSecret()
                         .then(function(res) {
                             if (res) {
                                 $scope.secretData = res;
+                                for (var i = 0; i < $scope.secretData.length; i++) {
+                                    $scope.getImageUrls($scope.secretData[i]);
+                                }
+
+                                console.log($scope.secretData);
+
                             } else {
                                 alertService.alert(res.err);
                             }
@@ -54,14 +85,25 @@
                 $scope.user = $localStorage.user;
 
                 $scope.createSecret = function() {
+                    if ($scope.uploader.queue.length > 0) {
+                        $scope.secretOne.images = [];
+                        for (var i = 0; i < $scope.uploader.queue.length; i++) {
+                            console.log($scope.uploader.queue[i].upload());
+                        }
+                    } else {
+                        $scope.createSecretSubmit();
+                    }
 
+                };
+
+                $scope.createSecretSubmit = function() {
                     secretService.postSecret($scope.secretOne)
                         .then(function(res) {
                             console.log(res);
                             if (res && res.result != false) {
                                 alertService.alert('Secret send successfully!');
                                 $scope.secretOne.content = '';
-                                $scope.secretOne.images = '';
+                                $scope.secretOne.images = [];
 
                                 // console.log(images);
 
@@ -70,7 +112,7 @@
                                 alertService.alert(res.err);
                             }
                         });
-                };
+                }
 
                 $scope.createForward = function() {
                     secretService.postSecret($scope.secretOne)
@@ -87,6 +129,10 @@
                             };
                         });
                 };
+
+                $scope.favorite = function() {
+
+                }
 
                 $scope.getCommentList = function(secret) {
                     var comments = "comments";
@@ -125,7 +171,25 @@
                     });
                 };
 
-                $scope.uploader = new FileUploader();
+                $scope.uploader = new FileUploader({
+                    url: $HOST.url + '/upload',
+                    onCompleteAll: function() {
+                        console.log('photo upload');
+                        if ($scope.secretOne.images.length == $scope.uploader.queue.length) {
+                            $scope.createSecretSubmit();
+                        } else {
+                            alertService.alert('?');
+                        }
+
+                    },
+                    onCompleteItem: function(item, res, status, header) {
+                        // console.log(res);
+                        if (res.result) {
+                            $scope.secretOne.images.push(res.data);
+                            console.log(res.data);
+                        }
+                    }
+                });
 
             });
 
@@ -133,7 +197,7 @@
 })();
 
 
-angular.module('himitsuApp').controller('CommentInstanceCtrl', function($scope, secretService, userService, $uibModalInstance, secret, $localStorage) {
+angular.module('himitsuApp').controller('CommentInstanceCtrl', function($scope, secretService, userService, $uibModalInstance, secret, $localStorage, alertService) {
 
     $scope.userId = userService.getUserId();
 

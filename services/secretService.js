@@ -1,17 +1,17 @@
-(function () {
+(function() {
 
     angular
         .module('himitsuApp')
-        .factory('secretService', function ($HOST, $http, $localStorage, $timeout) {
+        .factory('secretService', function($HOST, $http, $localStorage, $timeout) {
 
 
             var secretService = this;
 
-            this.getSecret = function (data) {
+            this.getSecret = function() {
 
-                return $http.get($HOST.url + '/secret', data)
-                    .then(function (res) {
-                         console.log(res.data.data);
+                return $http.get($HOST.url + '/secret')
+                    .then(function(res) {
+                        console.log(res.data.data);
 
                         if (res.data.data) {
 
@@ -26,10 +26,10 @@
 
             }
 
-            this.postSecret = function (data) {
+            this.postSecret = function(data) {
 
                 return $http.post($HOST.url + '/secret', data)
-                    .then(function (res) {
+                    .then(function(res) {
 
                         console.log(res.data);
 
@@ -42,9 +42,9 @@
                     });
             };
 
-            this.postComment = function (data) {
+            this.postComment = function(data) {
                 return $http.post($HOST.url + '/comment', data)
-                    .then(function (res) {
+                    .then(function(res) {
                         console.log(res.data);
 
                         console.log($localStorage.userId);
@@ -59,18 +59,18 @@
 
             };
 
-            this.getCommentList = function (id) {
+            this.getCommentList = function(id) {
 
-                return $http.get($HOST.url + '/comment?secret=' + id) 
-                    .then(function (res) {
+                return $http.get($HOST.url + '/comment?secret=' + id)
+                    .then(function(res) {
 
                         console.log("comment test");
 
                         if (res.data) {
 
-                            return $timeout(function(){
-                                    return res.data
-                                },1000);
+                            return $timeout(function() {
+                                return res.data
+                            }, 1000);
 
                         } else {
                             return {

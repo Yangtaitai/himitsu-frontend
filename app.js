@@ -6,7 +6,8 @@
             'ui.bootstrap', 'ui.router', 'ngStorage', 'angularFileUpload'
         ])
         .constant('$HOST', {
-            'url': 'http://topsecret.today:4000'
+            // 'url': 'http://topsecret.today:4000'
+            'url': 'http://localhost:4000'
         })
         .config(function($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/login');
@@ -70,14 +71,14 @@
                     function onLoadImage() {
                         var width = params.width || this.width / this.height * params.height;
 
-                        if(this.width / this.height * params.height>width)
+                        if (this.width / this.height * params.height > width)
                             width = this.width / this.height * params.height;
 
 
                         var height = params.height || this.height / this.width * params.width;
 
-                        if(this.height / this.width * params.width>height)
-                            height=this.height / this.width * params.width;
+                        if (this.height / this.width * params.width > height)
+                            height = this.height / this.width * params.width;
 
 
                         canvas.attr({ width: width, height: height });
